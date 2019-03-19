@@ -1,0 +1,132 @@
+<!doctype html>
+<html ⚡>
+<head>
+  <meta charset="utf-8">
+  <title>A lightbox gallery demo</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <script async custom-element="amp-lightbox-gallery" src="https://cdn.ampproject.org/v0/amp-lightbox-gallery-0.1.js"></script>
+  <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <style amp-custom>
+    html {
+      font-size: 18px;
+      line-height: 1.25;
+      color: #222;
+      background-color: #eee;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    .content {
+      max-width: 40em;
+      padding: 8px 16px;
+      margin: auto;
+    }
+
+    .content > .full-width {
+      margin: 0 -16px;
+    }
+
+    .carousel-with-captions {
+      font-size: 0.8em;
+      padding-bottom: calc(2.5em + 6px);
+    }
+
+    .carousel-with-captions figure > * {
+      bottom: calc(2.5em + 6px);
+    }
+
+    .carousel-with-captions figcaption {
+      position: absolute;
+      bottom: 0;
+      height: 2.5em;
+      padding: 6px 8px 0 8px;
+    }
+
+    .carousel-with-captions img {
+      object-fit: cover;
+    }
+
+    .img-with-text {
+      display: flex;
+    }
+
+    .article-image {
+      flex-shrink: 0;
+      width: 96px;
+      height: 96px;
+    }
+
+    .cover img {
+      object-fit: cover;
+    }
+
+    .description {
+      padding: 0 16px;
+    }
+
+    .near-top img {
+      object-fit: cover;
+      object-position: center 30%;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>A carousel with some images</h1>
+    <amp-carousel class="carousel-with-captions full-width" type="slides" loop lightbox layout="responsive" width="4" height="3">
+ 
+      <figure>
+        <amp-img layout="fill" src="./yosemite-falls.jpg"></amp-img>
+        <figcaption>
+          Waterfall in Yosemite National Park. By <a href="https://unsplash.com/@nate_dumlao">Nathan Dumlao</a>.
+        </figcaption>
+      </figure>
+      <figure>
+        <amp-img layout="fill" src="./golden-gate.jpg"></amp-img>
+        <figcaption>
+          The Golden Gate Bridge facing north. By <a href="https://unsplash.com/@oplattner">Oliver Planter</a>.
+        </figcaption>
+      </figure>
+      <figure>
+        <amp-img layout="fill" src="./beach.jpg"></amp-img>
+        <figcaption>
+          Stairs leading down to a beach. By <a href="https://unsplash.com/@khachiksimonian">Khachik Simonian</a>.
+        </figcaption>
+      </figure>
+    </amp-carousel>
+
+    <p>
+      The images above use <code>object-fit: cover</code> to fill the area of the carousel. This avoids leaving blank area around the images on the page. Going to the lightbox allows users to see the full picture as well as zoom-in with a double tap.
+    </p>
+
+    <h1>Going from a square crop, using <code>object-fit: cover</code></h1>
+    <div class="img-with-text">
+      <amp-img class="article-image cover" lightbox src="./beach.jpg" layout="responsive" width="12" height="12"></amp-img>
+      <div class="description">
+        In many cases, the most interesting portion of an image is in the center. You can use <code>object-fit: cover</code> to get the center portion of an image within some desired size. The user can see the edges of the picture when they go to lightbox mode.
+      </div>
+    </div>
+
+    <h1>Using <code>object-position</code></h1>
+    <amp-layout layout="responsive" width="4" height="3">
+      <amp-img class="near-top" layout="fill" lightbox src="./yosemite-falls.jpg"></amp-img>
+    </amp-layout>
+
+    <p>
+      If the center of the image is not the portion you want to focus on, you can use the <code>object-position</code> property to change the visible portion. The above example uses <code>object-position: center 30%;</code> to align the top of the image area with the point that is 30% from the top along the vertical axis of the image.
+    </p>
+
+    <p>
+      This allows the top portion of the waterfall to be completely visible. Adding some room at the top for the transition to the lightbox makes the transition feel nicer that if we had simply aligned to the top of the image.
+    </p>
+  </div>
+</body>
+</html>
